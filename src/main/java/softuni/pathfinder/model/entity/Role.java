@@ -1,23 +1,24 @@
 package softuni.pathfinder.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import softuni.pathfinder.model.entity.enums.UserRoles;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
 public class Role extends BaseEntity{
-    private String name;
+    private UserRoles name;
 
     public Role() {
     }
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    public String getName() {
+    public UserRoles getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(UserRoles name) {
         this.name = name;
     }
 }
