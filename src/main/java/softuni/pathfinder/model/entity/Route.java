@@ -5,9 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import softuni.pathfinder.model.entity.User;
+import softuni.pathfinder.model.entity.enums.Category;
 import softuni.pathfinder.model.entity.enums.Level;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Data
@@ -39,4 +41,7 @@ public class Route {
 
     @ManyToOne
     private User author;
+
+    @ManyToMany(targetEntity = Category.class, mappedBy = "routes")
+    private Set<Category> categories;
 }
