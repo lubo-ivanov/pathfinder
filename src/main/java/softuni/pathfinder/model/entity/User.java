@@ -21,6 +21,9 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "fullname", unique = true, nullable = false)
+    private String fullName;
+
     @Column(unique = true, nullable = false)
     private String username;
     //o Accepts values, which should be at least 2 characters
