@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import softuni.pathfinder.model.entity.enums.LevelEnum;
+import softuni.pathfinder.model.enums.LevelEnum;
 
 import javax.persistence.*;
 import java.util.Set;

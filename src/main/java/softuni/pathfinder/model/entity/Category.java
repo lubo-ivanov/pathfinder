@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import softuni.pathfinder.model.entity.Route;
-import softuni.pathfinder.model.entity.enums.CategoryEnum;
+import softuni.pathfinder.model.enums.CategoryEnum;
 
 import javax.persistence.*;
 import java.util.Set;

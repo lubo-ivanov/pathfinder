@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import softuni.pathfinder.model.entity.enums.RoleEnum;
+import softuni.pathfinder.model.enums.RoleEnum;
 
 import javax.persistence.*;
 

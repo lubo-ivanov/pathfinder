@@ -1,4 +1,4 @@
-package softuni.pathfinder.model.entity.enums;
+package softuni.pathfinder.model.enums;
 
 public enum LevelEnum {
     BEGINNER,
