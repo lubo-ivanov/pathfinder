@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import softuni.pathfinder.model.entity.User;
-import softuni.pathfinder.model.entity.enums.Category;
-import softuni.pathfinder.model.entity.enums.Level;
+import softuni.pathfinder.model.entity.enums.LevelEnum;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -31,7 +29,7 @@ public class Route {
     private String gpxCoordinates;
 
     @Enumerated(EnumType.STRING)
-    private Level level;
+    private LevelEnum levelEnum;
 
     @Column
     private String name;

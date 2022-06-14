@@ -1,4 +1,4 @@
-package softuni.pathfinder.model.entity.enums;
+package softuni.pathfinder.model.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import softuni.pathfinder.model.entity.Route;
+import softuni.pathfinder.model.entity.enums.CategoryEnum;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -26,7 +27,7 @@ public class Category {
     private String description;
 
     @Column
-    private String name;
+    private CategoryEnum name;
 
     @ManyToMany
     private Set<Route> routes;

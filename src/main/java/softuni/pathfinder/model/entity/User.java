@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import softuni.pathfinder.model.entity.enums.Level;
+import softuni.pathfinder.model.entity.enums.LevelEnum;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -41,5 +41,11 @@ public class User{
     //o Each registered user should have a "User" role
 
     @Enumerated(EnumType.STRING)
-    private Level level;
+    private LevelEnum levelEnum;
+
+    @OneToMany(targetEntity = Message.class, mappedBy = "author")
+    private Set<Message> sentMessages;
+
+    @OneToMany(targetEntity = Message.class, mappedBy = "recipient")
+    private Set<Message> receivedMessages;
 }
