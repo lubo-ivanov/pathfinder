@@ -29,6 +29,7 @@ public class Route {
     private String gpxCoordinates;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "level")
     private LevelEnum levelEnum;
 
     @Column
@@ -40,6 +41,6 @@ public class Route {
     @ManyToOne
     private User author;
 
-    @ManyToMany(targetEntity = Category.class, mappedBy = "routes")
+    @ManyToMany
     private Set<Category> categories;
 }

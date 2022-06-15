@@ -25,9 +25,6 @@ public class Category {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column
+    @Enumerated(EnumType.STRING)
     private CategoryEnum name;
-
-    @ManyToMany
-    private Set<Route> routes;
 }
