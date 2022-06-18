@@ -41,7 +41,6 @@ public class User{
 
     @ManyToMany
     private Set<Role> roles;
-    //o Each registered user should have a "User" role
 
     @Enumerated(EnumType.STRING)
     @Column(name = "level")
