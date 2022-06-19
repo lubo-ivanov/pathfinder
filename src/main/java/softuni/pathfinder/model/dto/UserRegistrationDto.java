@@ -6,9 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 @NoArgsConstructor
@@ -16,21 +14,23 @@ import javax.validation.constraints.Size;
 @Builder
 public class UserRegistrationDto {
 
-    @Length(min = 2)
+    @Length(min = 5, max = 20)
     private String username;
 
-    @NotNull
+    @Length(min = 5, max = 20)
     private String fullName;
 
     @NotNull
     @Email
     private String email;
 
+    @Min(0)
+    @Max(90)
     private Integer age;
 
-    @Length(min = 2)
+    @Length(min = 5, max = 20)
     private String password;
 
-    @Length(min = 2)
+    @Length(min = 5, max = 20)
     private String confirmPassword;
 }

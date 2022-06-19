@@ -1,9 +1,12 @@
 package softuni.pathfinder.web.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import softuni.pathfinder.model.dto.CurrentUser;
 import softuni.pathfinder.model.dto.UserLoginDto;
 import softuni.pathfinder.model.dto.UserRegistrationDto;
@@ -21,6 +24,11 @@ public class UserController {
     }
 
 
+    @ModelAttribute("userRegistrationDto")
+    public UserRegistrationDto flashRegistrationForm() {
+        return new UserRegistrationDto();
+    }
+
     @GetMapping("/users/login")
     public String userLogin() {
         return "login";
@@ -34,15 +42,19 @@ public class UserController {
 
     @PostMapping("/users/register")
     public String userRegister(@Valid UserRegistrationDto userRegistrationDto,
-                               BindingResult bindingResult) {
+                               BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return "register";
+            redirectAttributes
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegistrationDto",
+                            bindingResult);
+            redirectAttributes.addFlashAttribute("userRegistrationDto", userRegistrationDto);
+            return "redirect:/users/register";
         }
         if (!userRegistrationDto.getPassword()
                 .equals(userRegistrationDto.getConfirmPassword())) {
-            return "register";
+            return "redirect:/users/register";
         }
-        System.out.println(userRegistrationDto);
         userService.registerUser(userRegistrationDto);
         return "redirect:/users/login";
     }

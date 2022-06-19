@@ -43,8 +43,9 @@
                     </div>
                     <div class="col-auto">
                         <input name="fullName"
-                               th:value="*{fullName}"
-                               required minlength="5" maxlength="20"
+                               th:field="*{fullName}"
+                               required
+                               minlength="5" maxlength="20"
                                type="text"
                                id="inputFullName"
                                class="form-control"
@@ -61,7 +62,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="email"
-                               th:value="*{email}"
+                               th:field="*{email}"
                                required
                                type="email"
                                id="inputEmail"
@@ -76,12 +77,13 @@
                         <label for="inputAge" class="col-form-label ">Age</label>
                     </div>
                     <div class="col-auto">
-                        <input name="age" required
-                               th:value="*{age}"
+                        <input name="age"
+                               required
+                               th:field="*{age}"
+                               min="0" max="90"
                                type="number"
                                id="inputAge"
                                class="form-control"
-                               min="0" max="90"
                                aria-describedby="ageHelpInline">
                         <small id="ageError"
                                class="invalid-feedback  form-text bg-danger rounded">Must be valid age</small>
@@ -93,7 +95,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="password"
-                               th:value="*{password}"
+                               th:field="*{password}"
                                required minlength="5" maxlength="20"
                                type="password"
                                id="inputPassword"
@@ -112,7 +114,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="confirmPassword"
-                               th:value="*{confirmPassword}"
+                               th:field="*{confirmPassword}"
                                required minlength="5" maxlength="20"
                                type="password"
                                id="inputConfirmPassword"

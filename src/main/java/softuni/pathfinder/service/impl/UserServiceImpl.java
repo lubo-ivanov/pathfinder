@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
                 .password(userRegistrationDto.getPassword())
                 .levelEnum(LevelEnum.BEGINNER)
                 .build();
-                userRepository.save(user);
+        userRepository.save(user);
     }
 
     @Override
