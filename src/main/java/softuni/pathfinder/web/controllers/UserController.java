@@ -19,6 +19,7 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -44,9 +45,9 @@ public class UserController {
                                RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             redirectAttributes
+                    .addFlashAttribute("userRegistrationDto", userRegistrationDto)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegistrationDto",
                             bindingResult);
-            redirectAttributes.addFlashAttribute("userRegistrationDto", userRegistrationDto);
             return "redirect:/users/register";
         }
         if (!userRegistrationDto.getPassword()
