@@ -1,16 +1,11 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Pathfinder</title>
-    <th:block th:include="~{/fragments/head}"/>
-</head>
+<head th:replace="fragments/commons::head"></head>
 <body>
 <div class="wrapper">
     <!-- Navigation -->
-    <header>
-        <th:block th:include="~{/fragments/navbar}"/>
-    </header>
+    <header th:replace="fragments/commons::navbar"></header>
     <!-- Top Container -->
     <section class="top-container">
         <div class="showcase">
@@ -84,8 +79,7 @@
     <!-- <script th:src="@{/js/weather.js}"></script> -->
 </div>
 <!-- Wrapper Ends -->'
-
-<th:block th:include="~{fragments/footer}"/>
+<footer th:replace="fragments/commons::footer"></footer>
 </body>
 
 </html>

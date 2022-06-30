@@ -1,13 +1,13 @@
 package softuni.pathfinder.web.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import softuni.pathfinder.model.dto.CurrentUser;
+import softuni.pathfinder.util.CurrentUser;
 import softuni.pathfinder.model.dto.UserLoginDto;
 import softuni.pathfinder.model.dto.UserRegistrationDto;
 import softuni.pathfinder.model.entity.User;
@@ -16,31 +16,29 @@ import softuni.pathfinder.service.UserService;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
 
     @ModelAttribute("userRegistrationDto")
     public UserRegistrationDto flashRegistrationForm() {
         return new UserRegistrationDto();
     }
 
-    @GetMapping("/users/login")
+    @GetMapping("/login")
     public String userLogin() {
         return "login";
     }
 
-    @GetMapping("/users/register")
+    @GetMapping("/register")
     public String register() {
         return "register";
-
     }
 
-    @PostMapping("/users/register")
+    @PostMapping("/register")
     public String userRegister(@Valid UserRegistrationDto userRegistrationDto,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
@@ -59,7 +57,7 @@ public class UserController {
         return "redirect:/users/login";
     }
 
-    @PostMapping("users/login")
+    @PostMapping("/login")
     public String userLogin(UserLoginDto userLoginDto) {
         User user = userService.findUserByUsername(userLoginDto.getUsername());
         CurrentUser currentUser = CurrentUser.builder()

@@ -1,4 +1,4 @@
-package softuni.pathfinder.model.dto;
+package softuni.pathfinder.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
