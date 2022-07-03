@@ -21,7 +21,7 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name", unique = true, nullable = false)
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
     @Column
@@ -39,16 +39,16 @@ public class User{
     private String email;
     //o Accepts values, which contain the '@' symbol
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "level")
     private LevelEnum levelEnum;
 
-    @OneToMany(targetEntity = Message.class, mappedBy = "author")
+    @OneToMany(targetEntity = Message.class, mappedBy = "author", fetch = FetchType.EAGER)
     private Set<Message> sentMessages;
 
-    @OneToMany(targetEntity = Message.class, mappedBy = "recipient")
+    @OneToMany(targetEntity = Message.class, mappedBy = "recipient", fetch = FetchType.EAGER)
     private Set<Message> receivedMessages;
 }

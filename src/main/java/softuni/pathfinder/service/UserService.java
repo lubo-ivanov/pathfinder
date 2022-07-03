@@ -1,10 +1,11 @@
 package softuni.pathfinder.service;
 
-import softuni.pathfinder.model.dto.UserRegistrationDto;
-import softuni.pathfinder.model.entity.User;
+import softuni.pathfinder.model.service.UserServiceModel;
 
 public interface UserService {
-    void registerUser(UserRegistrationDto userRegistrationDto);
+    void registerUser(UserServiceModel userServiceModel);
 
-    User findUserByUsername(String username);
+    UserServiceModel findUserByUsernameAndPassword(String username, String password);
+
+    UserServiceModel findById(Long id);
 }
