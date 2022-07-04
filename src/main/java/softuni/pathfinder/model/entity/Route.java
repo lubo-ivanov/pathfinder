@@ -41,6 +41,9 @@ public class Route {
     @ManyToOne
     private User author;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Category> categories;
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    public Set<Picture> pictures;
 }
