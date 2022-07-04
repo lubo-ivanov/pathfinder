@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
                 .orElse(null);
     }
 
+    @Override
+    public boolean nameExists(String username) {
+        return userRepository.findByUsername(username).isPresent();
+    }
+
 }

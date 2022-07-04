@@ -103,7 +103,13 @@ model.addAttribute("userProfile", modelMapper.map(userService.findById(id), User
                 .equals(userRegistrationDto.getConfirmPassword())) {
             return "redirect:/register";
         }
-        userService.registerUser(modelMapper.map(userRegistrationDto, UserServiceModel.class));
+
+        boolean nameExists = userService.nameExists(userRegistrationDto.getUsername());
+        if(nameExists) {
+            //TODO redirect with message
+        }
+        userService
+                .registerUser(modelMapper.map(userRegistrationDto, UserServiceModel.class));
         return "redirect:/users/login";
     }
 

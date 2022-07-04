@@ -8,4 +8,6 @@ public interface UserService {
     UserServiceModel findUserByUsernameAndPassword(String username, String password);
 
     UserServiceModel findById(Long id);
+
+    boolean nameExists(String username);
 }
